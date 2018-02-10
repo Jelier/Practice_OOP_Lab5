@@ -13,17 +13,11 @@ namespace CustomException
         public string CauseOfTerror { get; set; }
         public CarlsDeadException() { }
         public CarlsDeadException(string message, string cause, DateTime time)
+            :base(message)
         {
-            messageDetails = message;
+
             CauseOfTerror = cause;
             ErrorTimeStamp = time;
-        }
-        public override string Message
-        {
-            get
-            {
-                return string.Format("Car Error Message: {0}", messageDetails);
-            }
         }
     }
 }
