@@ -37,8 +37,12 @@ namespace SimpleException
                 {                   
                     CurrentSpeed = 0;
                     carIsDead = true;
-
-                    throw new Exception(string.Format("{0} is overheated!", PetName));
+                    Exception ex = new Exception(string.Format("{0} is overheated!", PetName));
+                    ex.Data.Add("TimeStamp",
+                        string.Format("The car exploded at {0}", DateTime.Now));
+                    ex.Data.Add("Cause", "You have a lead foot");
+                    ex.HelpLink = "https://CarsRus.com";
+                    throw ex;
                 }
                 else
                     Console.WriteLine("-> CurrentSpeed = {0}", CurrentSpeed);

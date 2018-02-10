@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +28,14 @@ namespace SimpleException
                 Console.WriteLine("Message: {0}",e.Message);
                 Console.WriteLine("Source: {0}",e.Source);
                 Console.WriteLine("Stack: {0}", e.StackTrace);
+                Console.WriteLine("Help link: {0}", e.HelpLink);
+
+                Console.WriteLine("\n==> Custom Data:");
+                if (e.Data != null)
+                {
+                    foreach (DictionaryEntry de in e.Data)                   
+                        Console.WriteLine("==>{0}: {1}",de.Key, de.Value);                   
+                }
             }
             Console.WriteLine("\n *** Out of exception logic ***");
             Console.ReadLine();
